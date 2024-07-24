@@ -7,13 +7,11 @@ export class ContactListItem extends Component {
     filteredContact: PropTypes.object.isRequired,
     deleteContact: PropTypes.func.isRequired,
   };
-  /*  componentWillUnmount() {
-    console.log('componentWillUnmount');
-  } */
+
   handleDelete = () => {
-    const { filteredContacts, deleteContact } = this.props;
-    deleteContact(filteredContacts.id);
-    Notify.success(`${filteredContacts.name} is deleted`, {
+    const { filteredContact, deleteContact } = this.props;
+    deleteContact(filteredContact.id);
+    Notify.success(`${filteredContact.name} was deleted`, {
       position: 'center-top',
     });
   };
@@ -23,7 +21,7 @@ export class ContactListItem extends Component {
 
     return (
       <li>
-        <p>{filteredContact.name}</p>
+        <p>{filteredContact.name}:</p>
         <p>{filteredContact.number}</p>
         <button onClick={this.handleDelete}>Delete</button>
       </li>
